@@ -1,0 +1,16 @@
+PODS:
+  - BadgeSwift (8.0.0)
+
+DEPENDENCIES:
+  - BadgeSwift
+
+SPEC REPOS:
+  trunk:
+    - BadgeSwift
+
+SPEC CHECKSUMS:
+  BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
+
+PODFILE CHECKSUM: ecffb6c11f58fedc3f8d50120aebdbefab6251a0
+
+COCOAPODS: 1.10.0
