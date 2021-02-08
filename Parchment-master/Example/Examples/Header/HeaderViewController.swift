@@ -178,7 +178,7 @@ class HeaderViewController: UIViewController {
     viewControllers.first?.tableView.delegate = self
     
     DispatchQueue.main.async() {
-        self.headerConstraint.constant = UIScreen.main.bounds.height
+        self.headerConstraint.constant = HeaderPagingView.maxHeaderHeight
     }
   }
 }
