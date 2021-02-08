@@ -328,11 +328,16 @@ extension AdminMenuViewController: UITableViewDelegate {
     
     print("openAmount",openAmount, "percentage", percentage)
     
-    let widthMax =  min(HeaderPagingView.maxHeaderCoverWidth * headerScrollPercent, HeaderPagingView.maxHeaderCoverWidth)
+    let widthMax = min(HeaderPagingView.maxHeaderCoverWidth * headerScrollPercent, HeaderPagingView.maxHeaderCoverWidth)
     let width = max(HeaderPagingView.minHeaderCoverWidth, widthMax)
     
     self.headerView.frame = CGRect(x: 0 , y: 0, width: self.view.bounds.width, height: height)
     self.headerView.contentLeadingConstraint.constant = HeaderPagingView.maxHeaderCoverWidth - width
+    
+//    self.headerView.menuViewTopConstraint.constant = 0.5
+    self.headerView.menuView.alpha = 1 - headerScrollPercent
+    
+    
   }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

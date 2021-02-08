@@ -9,10 +9,11 @@
 import UIKit
 
 class AdminHeaderView: UIView {
-    @IBOutlet weak var headerMenuView: UIView!
-    @IBOutlet weak var contentMenuView: UIImageView!
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var contentLeadingConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var menuViewTopConstraint: NSLayoutConstraint!
+    
     override init(frame: CGRect) {
       super.init(frame: frame)
       commonInit()
