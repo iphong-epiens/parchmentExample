@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,7 +30,7 @@
                 </view>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVk-JD-Ofr" userLabel="menuView" customClass="AdminHeaderMenuView" customModule="Example" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="414" height="100"/>
-                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="mNm-Zw-wHa"/>
                     </constraints>
@@ -39,10 +38,6 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover" translatesAutoresizingMaskIntoConstraints="NO" id="5Sd-AZ-fZC">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUs-Z8-ewf">
-                    <rect key="frame" x="12" y="820" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,8 +54,6 @@
                 <constraint firstItem="0c7-Fq-0D6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="PbT-S3-Zlz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jEy-6q-FWq" secondAttribute="bottom" id="RTT-59-WdD"/>
                 <constraint firstItem="jEy-6q-FWq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Wne-63-YTW"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lUs-Z8-ewf" secondAttribute="bottom" constant="12" id="YBk-iG-4bU"/>
-                <constraint firstItem="lUs-Z8-ewf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="dyj-JK-WJO"/>
                 <constraint firstItem="5Sd-AZ-fZC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="e7h-Be-6z7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5Sd-AZ-fZC" secondAttribute="bottom" id="jx0-Fx-XY1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0c7-Fq-0D6" secondAttribute="bottom" id="rsQ-rI-fxp"/>
@@ -71,8 +64,5 @@
     <resources>
         <image name="cover" width="1080" height="1350"/>
         <image name="mj" width="1107" height="1476"/>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
