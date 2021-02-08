@@ -1,5 +1,5 @@
 //
-//  HeaderCoverView.swift
+//  AdminHeaderView.swift
 //  Example
 //
 //  Created by Inpyo Hong on 2021/02/08.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class HeaderCoverView: UIView {
-    @IBOutlet weak var coverImage: UIImageView!
-    @IBOutlet weak var coverLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var coverBottomConstraint: NSLayoutConstraint!
+class AdminHeaderView: UIView {
+    @IBOutlet weak var headerMenuView: UIView!
+    @IBOutlet weak var contentMenuView: UIImageView!
+    @IBOutlet weak var contentLeadingConstraint: NSLayoutConstraint!
 
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -24,14 +24,14 @@ class HeaderCoverView: UIView {
     }
 
     func commonInit() {
-      let bundle = Bundle.init(for: HeaderCoverView.self)
-      if let viewsToAdd = bundle.loadNibNamed("HeaderCoverView", owner: self, options: nil), let contentView = viewsToAdd.first as? UIView {
+      let bundle = Bundle.init(for: AdminHeaderView.self)
+      if let viewsToAdd = bundle.loadNibNamed("AdminHeaderView", owner: self, options: nil), let contentView = viewsToAdd.first as? UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight,
                                         .flexibleWidth]
         
-        coverLeadingConstraint.constant = 0
+        contentLeadingConstraint.constant = 0
       }
     }
 

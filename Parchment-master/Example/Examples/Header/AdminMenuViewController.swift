@@ -50,30 +50,30 @@ class HeaderPagingView: PagingView {
       return view
     }()
     
-//    var headerCoverView: HeaderCoverView!
+//    var headerCoverView: AdminHeaderView!
     
   override func setupConstraints() {
     addSubview(headerView)
     
-//    headerCoverView = HeaderCoverView()
+//    headerCoverView = AdminHeaderView()
 //    headerView.addSubview(headerCoverView)
 
     pageView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     headerView.translatesAutoresizingMaskIntoConstraints = false
-//    headerCoverView.translatesAutoresizingMaskIntoConstraints = false
+//    headerView.translatesAutoresizingMaskIntoConstraints = false
 
     maxHeaderHeightConstraint = headerView.heightAnchor.constraint(
       equalToConstant: HeaderPagingView.maxHeaderHeight
     )
     maxHeaderHeightConstraint?.isActive = true
     
-//    maxHeaderCoverHeightConstraint = headerCoverView.heightAnchor.constraint(
+//    maxHeaderCoverHeightConstraint = headerView.heightAnchor.constraint(
 //      equalToConstant: HeaderPagingView.maxHeaderHeight
 //    )
 //    maxHeaderCoverHeightConstraint?.isActive = true
 //
-//    maxHeaderCoverWidthConstraint = headerCoverView.widthAnchor.constraint(
+//    maxHeaderCoverWidthConstraint = headerView.widthAnchor.constraint(
 //        equalToConstant: HeaderPagingView.maxHeaderCoverWidth
 //    )
 //    maxHeaderCoverWidthConstraint?.isActive = true
@@ -88,9 +88,9 @@ class HeaderPagingView: PagingView {
       headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
       headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
         
-//      headerCoverView.topAnchor.constraint(equalTo: topAnchor),
-//      headerCoverView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//      headerCoverView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//      headerView.topAnchor.constraint(equalTo: topAnchor),
+//      headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//      headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
       
       pageView.leadingAnchor.constraint(equalTo: leadingAnchor),
       pageView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -113,14 +113,13 @@ class HeaderPagingViewController: PagingViewController {
   }
 }
 
-class HeaderViewController: UIViewController {
+class AdminMenuViewController: UIViewController {
   /// Cache the view controllers in an array to avoid re-creating them
   /// while swiping between pages. Since we only have three view
   /// controllers it's fine to keep them all in memory.
-    var headerView: UIView!
     
-    var headerCoverView: HeaderCoverView = {
-      let view = HeaderCoverView()
+    var headerView: AdminHeaderView = {
+      let view = AdminHeaderView()
       return view
     }()
     
@@ -217,17 +216,17 @@ class HeaderViewController: UIViewController {
         self.headerConstraint.constant = HeaderPagingView.maxHeaderHeight
 //        self.headerCoverHeightConstraint.constant = HeaderPagingView.maxHeaderHeight
 //        self.headerCoverWidthConstraint.constant = HeaderPagingView.maxHeaderCoverWidth
-        self.view.addSubview(self.headerCoverView)
-        self.headerCoverView.coverLeadingConstraint.constant = 0
-        //self.headerCoverView.coverBottomConstraint.constant = 23
-        self.headerCoverView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: HeaderPagingView.maxHeaderHeight)
+        self.view.addSubview(self.headerView)
+        self.headerView.contentLeadingConstraint.constant = 0
+        //self.headerView.coverBottomConstraint.constant = 23
+        self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: HeaderPagingView.maxHeaderHeight)
 
         // Contrain the paging view to all edges.
     }
   }
 }
 
-extension HeaderViewController: PagingViewControllerDataSource {
+extension AdminMenuViewController: PagingViewControllerDataSource {
   
   func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
     let viewController = viewControllers[index]
@@ -252,7 +251,7 @@ extension HeaderViewController: PagingViewControllerDataSource {
   
 }
 
-extension HeaderViewController: PagingViewControllerDelegate {
+extension AdminMenuViewController: PagingViewControllerDelegate {
   
   func pagingViewController(_ pagingViewController: PagingViewController, didScrollToItem pagingItem: PagingItem, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) {
     guard let startingViewController = startingViewController as? TableViewController else { return }
@@ -280,7 +279,7 @@ extension HeaderViewController: PagingViewControllerDelegate {
   }
 }
 
-extension HeaderViewController: UITableViewDelegate {
+extension AdminMenuViewController: UITableViewDelegate {
   
   func updateScrollIndicatorInsets(in scrollView: UIScrollView) {
     let offset = min(0, scrollView.contentOffset.y) * -1
@@ -316,7 +315,6 @@ extension HeaderViewController: UITableViewDelegate {
     headerConstraint.constant = height
     //headerCoverHeightConstraint.constant = height
     
-    
     print("headerConstraint",headerConstraint.constant, scrollRange)
 
     let progress: CGFloat = headerConstraint.constant - HeaderPagingView.minHeaderHeight
@@ -333,8 +331,8 @@ extension HeaderViewController: UITableViewDelegate {
     let widthMax =  min(HeaderPagingView.maxHeaderCoverWidth * headerScrollPercent, HeaderPagingView.maxHeaderCoverWidth)
     let width = max(HeaderPagingView.minHeaderCoverWidth, widthMax)
     
-    self.headerCoverView.frame = CGRect(x: self.view.bounds.width - width, y: 0, width: width, height: height)
-
+    self.headerView.frame = CGRect(x: 0 , y: 0, width: self.view.bounds.width, height: height)
+    self.headerView.contentLeadingConstraint.constant = HeaderPagingView.maxHeaderCoverWidth - width
   }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -363,4 +361,30 @@ extension HeaderViewController: UITableViewDelegate {
         }
     }
   
+//    func collapseHeader() {
+//        self.view.layoutIfNeeded()
+//        UIView.animate(withDuration: 0.2, animations: {
+//            self.headerHeightConstraint.constant = self.minHeaderHeight
+//            self.updateHeader()
+//            self.view.layoutIfNeeded()
+//        })
+//    }
+//
+//    func expandHeader() {
+//        self.view.layoutIfNeeded()
+//        UIView.animate(withDuration: 0.2, animations: {
+//            self.headerHeightConstraint.constant = self.maxHeaderHeight
+//            self.updateHeader()
+//            self.view.layoutIfNeeded()
+//        })
+//    }
+//
+//    func updateHeader() {
+//        let range = self.maxHeaderHeight - self.minHeaderHeight
+//        let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
+//        let percentage = openAmount / range
+//
+//        self.titleTopConstraint.constant = -openAmount + 10
+//        self.logoImageView.alpha = percentage
+//    }
 }

@@ -118,7 +118,7 @@ final class ExamplesViewController: UITableViewController {
     case .scroll:
       return ScrollViewController(nibName: nil, bundle: nil)
     case .header:
-      return HeaderViewController(nibName: nil, bundle: nil)
+      return AdminMenuViewController(nibName: nil, bundle: nil)
     case .multipleCells:
       return MultipleCellsViewController(nibName: nil, bundle: nil)
     case .pageViewController:

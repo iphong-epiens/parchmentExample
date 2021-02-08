@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="-484" y="1135"/>
         </scene>
-        <!--Header View Controller-->
+        <!--Admin Menu View Controller-->
         <scene sceneID="gRB-Pj-ezM">
             <objects>
-                <viewController storyboardIdentifier="HeaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JKF-kq-lRE" customClass="HeaderViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdminMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JKF-kq-lRE" customClass="AdminMenuViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RIB-NA-by6"/>
                         <viewControllerLayoutGuide type="bottom" id="OtT-yd-WwW"/>
