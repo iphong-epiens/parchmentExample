@@ -25,22 +25,30 @@ struct AdminMenuItem: PagingItem, Hashable, Comparable {
 }
 
 class HeaderPagingView: PagingView {
-  
-  static let maxHeaderHeight: CGFloat = UIScreen.main.bounds.height
-  static let minmaxHeaderHeight: CGFloat = 120
-  var maxHeaderHeightConstraint: NSLayoutConstraint?
-  
-  private lazy var headerView: UIImageView = {
-    let view = UIImageView(image: UIImage(named: "cover"))
-    view.contentMode = .scaleToFill
-    view.clipsToBounds = true
-    return view
-  }()
+   
+  static let maxHeaderHeight: CGFloat = UIScreen.main.bounds.height - 200
+  static let minHeaderHeight: CGFloat = 120
     
-//    private lazy var headerView: UIView = {
-//      let view = UIView()
-//      view.backgroundColor = .systemPink
-//
+//    static let maxHeaderCoverWidth: CGFloat = UIScreen.main.bounds.width
+//    static let minHeaderCoverWidth: CGFloat = 70
+
+    //var maxHeaderWidthConstraint: NSLayoutConstraint?
+  var maxHeaderHeightConstraint: NSLayoutConstraint?
+    
+  var maxHeaderCoverWidthConstraint: NSLayoutConstraint?
+  var maxHeaderCoverHeightConstraint: NSLayoutConstraint?
+  
+//  private lazy var headerView: UIImageView = {
+//    let view = UIImageView(image: UIImage(named: "cover"))
+//    view.contentMode = .scaleToFill
+//    view.clipsToBounds = true
+//    return view
+//  }()
+    
+    private lazy var headerView: UIView = {
+      let view = UIView()
+      view.backgroundColor = .systemPink
+
 //      let imgView = UIImageView(image: UIImage(named: "cover"))
 //      imgView.contentMode = .scaleToFill
 //      imgView.clipsToBounds = true
@@ -49,22 +57,55 @@ class HeaderPagingView: PagingView {
 //      let blurView = UIView()
 //      blurView.backgroundColor = UIColor(white: 102.0 / 255.0, alpha: 0.5)
 //      view.addSubview(blurView)
+
+      return view
+    }()
+    
+    private lazy var headerCoverView: UIView = {
+      let view = UIView()
+      view.backgroundColor = .green
+
+//      let imgView = UIImageView(image: UIImage(named: "cover"))
+//      imgView.contentMode = .scaleAspectFit
+//      imgView.clipsToBounds = true
+//      view.addSubview(imgView)
 //
-//      return view
-//    }()
+//      let blurView = UIView()
+//      blurView.backgroundColor = UIColor(white: 102.0 / 255.0, alpha: 0.5)
+//      view.addSubview(blurView)
+
+      return view
+    }()
   
   override func setupConstraints() {
     addSubview(headerView)
-    
+    headerView.addSubview(headerCoverView)
+
     pageView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     headerView.translatesAutoresizingMaskIntoConstraints = false
-    
+    headerCoverView.translatesAutoresizingMaskIntoConstraints = false
+
     maxHeaderHeightConstraint = headerView.heightAnchor.constraint(
       equalToConstant: HeaderPagingView.maxHeaderHeight
     )
     maxHeaderHeightConstraint?.isActive = true
     
+//    maxHeaderWidthConstraint = headerView.widthAnchor.constraint(
+//        equalToConstant: self.bounds.width
+//    )
+//    maxHeaderWidthConstraint?.isActive = true
+    
+    maxHeaderCoverHeightConstraint = headerCoverView.heightAnchor.constraint(
+      equalToConstant: HeaderPagingView.maxHeaderHeight
+    )
+    maxHeaderCoverHeightConstraint?.isActive = true
+    
+//    maxHeaderCoverWidthConstraint = headerCoverView.widthAnchor.constraint(
+//        equalToConstant: HeaderPagingView.maxHeaderCoverWidth
+//    )
+//    maxHeaderCoverWidthConstraint?.isActive = true
+        
     NSLayoutConstraint.activate([
       collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -74,6 +115,10 @@ class HeaderPagingView: PagingView {
       headerView.topAnchor.constraint(equalTo: topAnchor),
       headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
       headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        
+      headerCoverView.topAnchor.constraint(equalTo: topAnchor),
+      headerCoverView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      headerCoverView.trailingAnchor.constraint(equalTo: trailingAnchor),
       
       pageView.leadingAnchor.constraint(equalTo: leadingAnchor),
       pageView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -101,7 +146,7 @@ class HeaderViewController: UIViewController {
   /// controllers it's fine to keep them all in memory.
     
     lazy var scrollRange: CGFloat = {
-        return HeaderPagingView.maxHeaderHeight - HeaderPagingView.minmaxHeaderHeight
+        return HeaderPagingView.maxHeaderHeight - HeaderPagingView.minHeaderHeight
     }()
 
     var headerScrollPercent: CGFloat = 0
@@ -127,6 +172,16 @@ class HeaderViewController: UIViewController {
     let pagingView = pagingViewController.view as! HeaderPagingView
     return pagingView.maxHeaderHeightConstraint!
   }
+    
+    private var headerCoverHeightConstraint: NSLayoutConstraint {
+      let pagingView = pagingViewController.view as! HeaderPagingView
+      return pagingView.maxHeaderCoverHeightConstraint!
+    }
+    
+//    private var headerCoverWidthConstraint: NSLayoutConstraint {
+//      let pagingView = pagingViewController.view as! HeaderPagingView
+//      return pagingView.maxHeaderCoverWidthConstraint!
+//    }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -179,6 +234,8 @@ class HeaderViewController: UIViewController {
     
     DispatchQueue.main.async() {
         self.headerConstraint.constant = HeaderPagingView.maxHeaderHeight
+        self.headerCoverHeightConstraint.constant = HeaderPagingView.maxHeaderHeight
+//        self.headerCoverWidthConstraint.constant = HeaderPagingView.maxHeaderCoverWidth
     }
   }
 }
@@ -250,13 +307,14 @@ extension HeaderViewController: UITableViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     print("scrollView.contentOffset.y",scrollView.contentOffset.y)
 
-    guard scrollView.contentOffset.y < HeaderPagingView.minmaxHeaderHeight else {
+    guard scrollView.contentOffset.y < HeaderPagingView.minHeaderHeight else {
       // Reset the header constraint in case we scrolled so fast that
       // the height was not set to zero before the content offset
       // became negative.
-        if headerConstraint.constant > HeaderPagingView.minmaxHeaderHeight {
-            headerConstraint.constant = HeaderPagingView.minmaxHeaderHeight
+        if headerConstraint.constant > HeaderPagingView.minHeaderHeight {
+            headerConstraint.constant = HeaderPagingView.minHeaderHeight
       }
+        
       return
     }
     
@@ -266,21 +324,27 @@ extension HeaderViewController: UITableViewDelegate {
     
     // Update the height of the header view based on the content
     // offset of the currently selected view controller.
-    let height = max(HeaderPagingView.minmaxHeaderHeight, abs(scrollView.contentOffset.y) - pagingViewController.options.menuHeight)
+
+    let height = max(HeaderPagingView.minHeaderHeight, abs(scrollView.contentOffset.y) - pagingViewController.options.menuHeight)
     headerConstraint.constant = height
+    headerCoverHeightConstraint.constant = height
+//  headerCoverWidthConstraint.constant = 10
     
     print("headerConstraint",headerConstraint.constant, scrollRange)
 
-    let progress: CGFloat = headerConstraint.constant - HeaderPagingView.minmaxHeaderHeight
+    let progress: CGFloat = headerConstraint.constant - HeaderPagingView.minHeaderHeight
 
     headerScrollPercent = CGFloat(Float(progress/scrollRange))
     
     print("headerScrollPercent", headerScrollPercent)
     
-    let openAmount = self.headerConstraint.constant - HeaderPagingView.minmaxHeaderHeight
+    let openAmount = self.headerConstraint.constant - HeaderPagingView.minHeaderHeight
     let percentage = openAmount / scrollRange
     
     print("openAmount",openAmount, "percentage", percentage)
+    
+//    let width = max(HeaderPagingView.minHeaderCoverWidth, pagingViewController.options.menuHeight * percentage)
+//    headerCoverWidthConstraint.constant = width
   }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -296,7 +360,7 @@ extension HeaderViewController: UITableViewDelegate {
     }
     
     func scrollViewDidStopScrolling() {
-        let midPoint = HeaderPagingView.minmaxHeaderHeight + (scrollRange / 2)
+        let midPoint = HeaderPagingView.minHeaderHeight + (scrollRange / 2)
 
         if self.headerConstraint.constant > midPoint {
             //self.expandHeader()
