@@ -31,11 +31,27 @@ class HeaderPagingView: PagingView {
   var maxHeaderHeightConstraint: NSLayoutConstraint?
   
   private lazy var headerView: UIImageView = {
-    let view = UIImageView(image: UIImage(named: "Header"))
+    let view = UIImageView(image: UIImage(named: "cover"))
     view.contentMode = .scaleToFill
     view.clipsToBounds = true
     return view
   }()
+    
+//    private lazy var headerView: UIView = {
+//      let view = UIView()
+//      view.backgroundColor = .systemPink
+//
+//      let imgView = UIImageView(image: UIImage(named: "cover"))
+//      imgView.contentMode = .scaleToFill
+//      imgView.clipsToBounds = true
+//      view.addSubview(imgView)
+//
+//      let blurView = UIView()
+//      blurView.backgroundColor = UIColor(white: 102.0 / 255.0, alpha: 0.5)
+//      view.addSubview(blurView)
+//
+//      return view
+//    }()
   
   override func setupConstraints() {
     addSubview(headerView)
@@ -84,14 +100,12 @@ class HeaderViewController: UIViewController {
   /// while swiping between pages. Since we only have three view
   /// controllers it's fine to keep them all in memory.
     
-    lazy var scrollLimit: CGFloat = {
+    lazy var scrollRange: CGFloat = {
         return HeaderPagingView.maxHeaderHeight - HeaderPagingView.minmaxHeaderHeight
     }()
 
-    
     var headerScrollPercent: CGFloat = 0
     let badgeCount: Int = 12
-    
     
     fileprivate let AdminMenuTitle = [
       "회원관리",
@@ -255,14 +269,44 @@ extension HeaderViewController: UITableViewDelegate {
     let height = max(HeaderPagingView.minmaxHeaderHeight, abs(scrollView.contentOffset.y) - pagingViewController.options.menuHeight)
     headerConstraint.constant = height
     
-    print("headerConstraint",headerConstraint.constant, scrollLimit)
+    print("headerConstraint",headerConstraint.constant, scrollRange)
 
     let progress: CGFloat = headerConstraint.constant - HeaderPagingView.minmaxHeaderHeight
 
-    headerScrollPercent = CGFloat(Float(progress/scrollLimit))
+    headerScrollPercent = CGFloat(Float(progress/scrollRange))
     
     print("headerScrollPercent", headerScrollPercent)
-
+    
+    let openAmount = self.headerConstraint.constant - HeaderPagingView.minmaxHeaderHeight
+    let percentage = openAmount / scrollRange
+    
+    print("openAmount",openAmount, "percentage", percentage)
   }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("scrollViewDidEndDecelerating", scrollView.contentOffset.y)
+        self.scrollViewDidStopScrolling()
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print("scrollViewDidEndDragging", scrollView.contentOffset.y)
+        if !decelerate {
+            self.scrollViewDidStopScrolling()
+        }
+    }
+    
+    func scrollViewDidStopScrolling() {
+        let midPoint = HeaderPagingView.minmaxHeaderHeight + (scrollRange / 2)
+
+        if self.headerConstraint.constant > midPoint {
+            //self.expandHeader()
+           //print("expandHeader",
+            print("expanded state")
+        } else {
+            //self.collapseHeader()
+            //print("collapseHeader",
+           print("collapsed state")
+        }
+    }
   
 }

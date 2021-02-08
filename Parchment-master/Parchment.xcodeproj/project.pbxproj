@@ -940,7 +940,7 @@
 					};
 					3EA04A591C53BFF40054E5E0 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = G4TGN24VA2;
+						DevelopmentTeam = UV36497CVB;
 						LastSwiftMigration = 1020;
 					};
 					95D2AE40242BC1F900AC3D46 = {
@@ -1567,7 +1567,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = G4TGN24VA2;
+				DEVELOPMENT_TEAM = UV36497CVB;
 				INFOPLIST_FILE = Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1584,7 +1584,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = G4TGN24VA2;
+				DEVELOPMENT_TEAM = UV36497CVB;
 				INFOPLIST_FILE = Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
