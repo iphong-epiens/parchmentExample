@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
                 </view>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVk-JD-Ofr" userLabel="menuView">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVk-JD-Ofr" userLabel="menuView" customClass="AdminHeaderMenuView" customModule="Example" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="414" height="100"/>
                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                     <constraints>

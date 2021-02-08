@@ -11,6 +11,8 @@
 		2ED71F4225D06ED60014831C /* AdminMenuPagingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED71F4125D06ED60014831C /* AdminMenuPagingCell.swift */; };
 		2EF65D5825D12C5D0004F6D5 /* AdminHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF65D5725D12C5D0004F6D5 /* AdminHeaderView.swift */; };
 		2EF65D5D25D12C6C0004F6D5 /* AdminHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF65D5C25D12C6C0004F6D5 /* AdminHeaderView.xib */; };
+		2EF65D6825D157DB0004F6D5 /* AdminHeaderMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF65D6725D157DB0004F6D5 /* AdminHeaderMenuView.swift */; };
+		2EF65D6D25D157E50004F6D5 /* AdminHeaderMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF65D6C25D157E50004F6D5 /* AdminHeaderMenuView.xib */; };
 		3E2AAD201CA81EA20044AAA5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2AAD1F1CA81EA20044AAA5 /* ContentViewController.swift */; };
 		3E2AAD281CA831AB0044AAA5 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2AAD271CA831AB0044AAA5 /* UIView+constraints.swift */; };
 		3E2AAD2C1CA869B50044AAA5 /* PagingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2AAD2B1CA869B50044AAA5 /* PagingItem.swift */; };
@@ -214,6 +216,8 @@
 		2ED71F4125D06ED60014831C /* AdminMenuPagingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminMenuPagingCell.swift; path = Example/Examples/AdminMenuPagingCell.swift; sourceTree = SOURCE_ROOT; };
 		2EF65D5725D12C5D0004F6D5 /* AdminHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHeaderView.swift; sourceTree = "<group>"; };
 		2EF65D5C25D12C6C0004F6D5 /* AdminHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminHeaderView.xib; sourceTree = "<group>"; };
+		2EF65D6725D157DB0004F6D5 /* AdminHeaderMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHeaderMenuView.swift; sourceTree = "<group>"; };
+		2EF65D6C25D157E50004F6D5 /* AdminHeaderMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminHeaderMenuView.xib; sourceTree = "<group>"; };
 		3A6EF3AD5364BBBFFF8B60D6 /* Pods-Parchment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parchment.release.xcconfig"; path = "Target Support Files/Pods-Parchment/Pods-Parchment.release.xcconfig"; sourceTree = "<group>"; };
 		3BF871336EFDF94E7B002F89 /* Pods-Parchment-ParchmentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parchment-ParchmentTests.release.xcconfig"; path = "Target Support Files/Pods-Parchment-ParchmentTests/Pods-Parchment-ParchmentTests.release.xcconfig"; sourceTree = "<group>"; };
 		3E2AAD091CA81D490044AAA5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -708,6 +712,8 @@
 				955453EC2415165500923BC8 /* AdminMenuViewController.swift */,
 				2EF65D5725D12C5D0004F6D5 /* AdminHeaderView.swift */,
 				2EF65D5C25D12C6C0004F6D5 /* AdminHeaderView.xib */,
+				2EF65D6725D157DB0004F6D5 /* AdminHeaderMenuView.swift */,
+				2EF65D6C25D157E50004F6D5 /* AdminHeaderMenuView.xib */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -1008,6 +1014,7 @@
 				3EA04A641C53BFF40054E5E0 /* Assets.xcassets in Resources */,
 				3EA04A621C53BFF40054E5E0 /* Main.storyboard in Resources */,
 				2EF65D5D25D12C6C0004F6D5 /* AdminHeaderView.xib in Resources */,
+				2EF65D6D25D157E50004F6D5 /* AdminHeaderMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1272,6 +1279,7 @@
 				955453ED2415165800923BC8 /* AdminMenuViewController.swift in Sources */,
 				955453CF2413DC6900923BC8 /* UIColor+interpolation.swift in Sources */,
 				955453F32415181800923BC8 /* StoryboardViewController.swift in Sources */,
+				2EF65D6825D157DB0004F6D5 /* AdminHeaderMenuView.swift in Sources */,
 				955453D12413DCB700923BC8 /* CalendarPagingCell.swift in Sources */,
 				955453D82413E11300923BC8 /* UnsplashViewController.swift in Sources */,
 				955453EF2415172800923BC8 /* MultipleCellsViewController.swift in Sources */,
