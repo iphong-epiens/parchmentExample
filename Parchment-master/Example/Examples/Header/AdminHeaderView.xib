@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdminHeaderView" customModule="Example" customModuleProvider="target">
             <connections>
-                <outlet property="contentLeadingConstraint" destination="e7h-Be-6z7" id="pdy-Br-fZQ"/>
+                <outlet property="coverLeadingConstraint" destination="e7h-Be-6z7" id="pdy-Br-fZQ"/>
                 <outlet property="coverView" destination="5Sd-AZ-fZC" id="aks-Zq-DGu"/>
                 <outlet property="menuView" destination="GVk-JD-Ofr" id="Zsr-sr-Bfm"/>
                 <outlet property="menuViewTopConstraint" destination="L3g-MM-rhv" id="2fA-Yd-U0i"/>

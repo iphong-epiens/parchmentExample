@@ -213,7 +213,7 @@ class AdminMenuViewController: UIViewController {
 //        self.headerCoverHeightConstraint.constant = HeaderPagingView.maxHeaderHeight
 //        self.headerCoverWidthConstraint.constant = HeaderPagingView.maxHeaderCoverWidth
         self.view.addSubview(self.headerView)
-        self.headerView.contentLeadingConstraint.constant = 0
+        self.headerView.coverLeadingConstraint.constant = 0
         self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: HeaderPagingView.maxHeaderHeight)
         
         
@@ -231,10 +231,11 @@ class AdminMenuViewController: UIViewController {
 //            self.headerConstraint.constant = HeaderPagingView.minHeaderHeight
 //
 //            self.headerView.frame = CGRect(x: 0, y: 0, width: HeaderPagingView.maxHeaderCoverWidth, height: HeaderPagingView.minHeaderHeight)
-//            self.headerView.contentLeadingConstraint.constant = self.view.bounds.width - HeaderPagingView.minHeaderCoverWidth
+//            self.headerView.coverLeadingConstraint.constant = self.view.bounds.width - HeaderPagingView.minHeaderCoverWidth
             
             self.viewControllers.first?.tableView.setContentOffset(CGPoint(x:0, y: -120), animated: true)
-            
+           self.headerView.scrollBtn.alpha = 0
+//
             
         }).disposed(by: disposeBag)
   }
@@ -347,9 +348,11 @@ extension AdminMenuViewController: UITableViewDelegate {
     headerConstraint.constant = height
     
     self.headerView.frame = CGRect(x: 0 , y: 0, width: self.view.bounds.width, height: height)
-    self.headerView.contentLeadingConstraint.constant = HeaderPagingView.maxHeaderCoverWidth - width
+    self.headerView.coverLeadingConstraint.constant = HeaderPagingView.maxHeaderCoverWidth - width
     
     self.headerView.menuView.alpha = 1.0 - headerScrollPercent
+    
+    //self.headerView.scrollBtn.alpha = headerScrollPercent == 0 ? 1.0 : headerScrollPercent
   }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -367,14 +370,30 @@ extension AdminMenuViewController: UITableViewDelegate {
     func scrollViewDidStopScrolling() {
         let midPoint = HeaderPagingView.minHeaderHeight + (scrollRange / 2)
 
+        let openAmount = self.headerConstraint.constant - HeaderPagingView.minHeaderHeight
+        let percentage = openAmount / scrollRange
+        
+                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.headerView.scrollBtn.alpha = percentage
+
+                    self.view.layoutIfNeeded()
+                })
+        
         if self.headerConstraint.constant > midPoint {
             //self.expandHeader()
            //print("expandHeader",
             print("expanded state")
+            
+            //        let range = self.maxHeaderHeight - self.minHeaderHeight
+            //        let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
+            //        let percentage = openAmount / range
+            //
         } else {
             //self.collapseHeader()
             //print("collapseHeader",
            print("collapsed state")
+
         }
     }
   
@@ -397,7 +416,7 @@ extension AdminMenuViewController: UITableViewDelegate {
 //    }
 //
 //    func updateHeader() {
-//        let range = self.maxHeaderHeight - self.minHeaderHeight
+//        //let range = self.maxHeaderHeight - self.minHeaderHeight
 //        let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
 //        let percentage = openAmount / range
 //

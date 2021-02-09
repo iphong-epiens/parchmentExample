@@ -11,7 +11,7 @@ import UIKit
 class AdminHeaderView: UIView {
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var coverView: UIImageView!
-    @IBOutlet weak var contentLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var coverLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollBtn: UIButton!
     
@@ -32,8 +32,6 @@ class AdminHeaderView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight,
                                         .flexibleWidth]
-        
-        contentLeadingConstraint.constant = 0
       }
     }
 
