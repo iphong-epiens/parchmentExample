@@ -13,6 +13,7 @@ class AdminHeaderView: UIView {
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var contentLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollBtn: UIButton!
     
     override init(frame: CGRect) {
       super.init(frame: frame)

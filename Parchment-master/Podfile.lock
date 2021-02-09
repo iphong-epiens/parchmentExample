@@ -1,16 +1,30 @@
 PODS:
   - BadgeSwift (8.0.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
   - BadgeSwift
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
     - BadgeSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: ecffb6c11f58fedc3f8d50120aebdbefab6251a0
+PODFILE CHECKSUM: fea401156b78d8ab4bdf268b1e2941414bfc598c
 
 COCOAPODS: 1.10.0

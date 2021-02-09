@@ -1,5 +1,7 @@
 import UIKit
 import Parchment
+import RxSwift
+import RxCocoa
 
 // This first thing we need to do is to create our own custom paging
 // view and override the layout constraints. The default
@@ -26,7 +28,7 @@ struct AdminMenuItem: PagingItem, Hashable, Comparable {
 
 class HeaderPagingView: PagingView {
    
-  static let maxHeaderHeight: CGFloat = UIScreen.main.bounds.height - 100
+  static let maxHeaderHeight: CGFloat = UIScreen.main.bounds.height
   static let minHeaderHeight: CGFloat = 120
     
     static let maxHeaderCoverWidth: CGFloat = UIScreen.main.bounds.width
@@ -36,13 +38,6 @@ class HeaderPagingView: PagingView {
     
 //  var maxHeaderCoverWidthConstraint: NSLayoutConstraint?
 //  var maxHeaderCoverHeightConstraint: NSLayoutConstraint?
-  
-//  private lazy var headerView: UIImageView = {
-//    let view = UIImageView(image: UIImage(named: "cover"))
-//    view.contentMode = .scaleToFill
-//    view.clipsToBounds = true
-//    return view
-//  }()
     
     var headerView: UIView = {
       let view = UIView()
@@ -117,6 +112,7 @@ class AdminMenuViewController: UIViewController {
   /// Cache the view controllers in an array to avoid re-creating them
   /// while swiping between pages. Since we only have three view
   /// controllers it's fine to keep them all in memory.
+    let disposeBag = DisposeBag()
     
     var headerView: AdminHeaderView = {
       let view = AdminHeaderView()
@@ -218,11 +214,29 @@ class AdminMenuViewController: UIViewController {
 //        self.headerCoverWidthConstraint.constant = HeaderPagingView.maxHeaderCoverWidth
         self.view.addSubview(self.headerView)
         self.headerView.contentLeadingConstraint.constant = 0
-        //self.headerView.coverBottomConstraint.constant = 23
         self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: HeaderPagingView.maxHeaderHeight)
+        
+        
+        
+       // Contrain the paging view to all edges.
+       // self.viewControllers.first?.tableView.setContentOffset(CGPoint.zero, animated: true)
 
-        // Contrain the paging view to all edges.
+        
     }
+    
+    self.headerView.scrollBtn.rx.tap
+        .subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
+            print("headerView.scrollBtn.rx.tap")
+//            self.headerConstraint.constant = HeaderPagingView.minHeaderHeight
+//
+//            self.headerView.frame = CGRect(x: 0, y: 0, width: HeaderPagingView.maxHeaderCoverWidth, height: HeaderPagingView.minHeaderHeight)
+//            self.headerView.contentLeadingConstraint.constant = self.view.bounds.width - HeaderPagingView.minHeaderCoverWidth
+            
+            self.viewControllers.first?.tableView.setContentOffset(CGPoint(x:0, y: -120), animated: true)
+            
+            
+        }).disposed(by: disposeBag)
   }
 }
 
@@ -310,10 +324,6 @@ extension AdminMenuViewController: UITableViewDelegate {
     
     // Update the height of the header view based on the content
     // offset of the currently selected view controller.
-
-    let height = max(HeaderPagingView.minHeaderHeight, abs(scrollView.contentOffset.y) - pagingViewController.options.menuHeight)
-    headerConstraint.constant = height
-    //headerCoverHeightConstraint.constant = height
     
     print("headerConstraint",headerConstraint.constant, scrollRange)
 
@@ -331,13 +341,15 @@ extension AdminMenuViewController: UITableViewDelegate {
     let widthMax = min(HeaderPagingView.maxHeaderCoverWidth * headerScrollPercent, HeaderPagingView.maxHeaderCoverWidth)
     let width = max(HeaderPagingView.minHeaderCoverWidth, widthMax)
     
+    let heightMax = min(abs(scrollView.contentOffset.y) - pagingViewController.options.menuHeight, HeaderPagingView.maxHeaderHeight)
+    
+    let height = max(HeaderPagingView.minHeaderHeight, heightMax)
+    headerConstraint.constant = height
+    
     self.headerView.frame = CGRect(x: 0 , y: 0, width: self.view.bounds.width, height: height)
     self.headerView.contentLeadingConstraint.constant = HeaderPagingView.maxHeaderCoverWidth - width
     
-//    self.headerView.menuViewTopConstraint.constant = 0.5
-    self.headerView.menuView.alpha = 1 - headerScrollPercent
-    
-    
+    self.headerView.menuView.alpha = 1.0 - headerScrollPercent
   }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

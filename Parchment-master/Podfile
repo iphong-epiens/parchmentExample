@@ -7,6 +7,8 @@ target 'Example' do
 
   # Pods for Example
 pod 'BadgeSwift'
+pod 'RxSwift'
+pod 'RxCocoa'	 
 end
 
 target 'ExampleSwiftUI' do

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		17D0051E62103F468778A606 /* Pods_Parchment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED9E418B76DA22454E92B8F /* Pods_Parchment.framework */; };
+		2E63C0C525D2124D004ACBC1 /* AdminHeaderPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63C0C425D2124D004ACBC1 /* AdminHeaderPagingView.swift */; };
+		2E63C0CA25D2125A004ACBC1 /* AdminHeaderPagingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E63C0C925D2125A004ACBC1 /* AdminHeaderPagingView.xib */; };
 		2ED71F4225D06ED60014831C /* AdminMenuPagingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED71F4125D06ED60014831C /* AdminMenuPagingCell.swift */; };
 		2EF65D5825D12C5D0004F6D5 /* AdminHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF65D5725D12C5D0004F6D5 /* AdminHeaderView.swift */; };
 		2EF65D5D25D12C6C0004F6D5 /* AdminHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF65D5C25D12C6C0004F6D5 /* AdminHeaderView.xib */; };
@@ -213,6 +215,8 @@
 		0D12B4CD3E152EA05776CFB8 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		183AA9F1235B7742003A6408 /* MultipleCellsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCellsViewController.swift; sourceTree = "<group>"; };
 		21B746A8AA494745AB4F7309 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		2E63C0C425D2124D004ACBC1 /* AdminHeaderPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHeaderPagingView.swift; sourceTree = "<group>"; };
+		2E63C0C925D2125A004ACBC1 /* AdminHeaderPagingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminHeaderPagingView.xib; sourceTree = "<group>"; };
 		2ED71F4125D06ED60014831C /* AdminMenuPagingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminMenuPagingCell.swift; path = Example/Examples/AdminMenuPagingCell.swift; sourceTree = SOURCE_ROOT; };
 		2EF65D5725D12C5D0004F6D5 /* AdminHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHeaderView.swift; sourceTree = "<group>"; };
 		2EF65D5C25D12C6C0004F6D5 /* AdminHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminHeaderView.xib; sourceTree = "<group>"; };
@@ -714,6 +718,8 @@
 				2EF65D5C25D12C6C0004F6D5 /* AdminHeaderView.xib */,
 				2EF65D6725D157DB0004F6D5 /* AdminHeaderMenuView.swift */,
 				2EF65D6C25D157E50004F6D5 /* AdminHeaderMenuView.xib */,
+				2E63C0C425D2124D004ACBC1 /* AdminHeaderPagingView.swift */,
+				2E63C0C925D2125A004ACBC1 /* AdminHeaderPagingView.xib */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -1012,6 +1018,7 @@
 			files = (
 				3EA04A671C53BFF40054E5E0 /* LaunchScreen.storyboard in Resources */,
 				3EA04A641C53BFF40054E5E0 /* Assets.xcassets in Resources */,
+				2E63C0CA25D2125A004ACBC1 /* AdminHeaderPagingView.xib in Resources */,
 				3EA04A621C53BFF40054E5E0 /* Main.storyboard in Resources */,
 				2EF65D5D25D12C6C0004F6D5 /* AdminHeaderView.xib in Resources */,
 				2EF65D6D25D157E50004F6D5 /* AdminHeaderMenuView.xib in Resources */,
@@ -1112,10 +1119,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BadgeSwift/BadgeSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BadgeSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1293,6 +1306,7 @@
 				955453E42413E2AB00923BC8 /* NavigationBarViewController.swift in Sources */,
 				955453DB2413E11300923BC8 /* ImagesViewController.swift in Sources */,
 				3EA04A5F1C53BFF40054E5E0 /* BasicViewController.swift in Sources */,
+				2E63C0C525D2124D004ACBC1 /* AdminHeaderPagingView.swift in Sources */,
 				955453E52413E37700923BC8 /* TableViewController.swift in Sources */,
 				955453D02413DCB700923BC8 /* CalendarViewController.swift in Sources */,
 				2EF65D5825D12C5D0004F6D5 /* AdminHeaderView.swift in Sources */,

@@ -14,6 +14,7 @@
                 <outlet property="coverView" destination="5Sd-AZ-fZC" id="aks-Zq-DGu"/>
                 <outlet property="menuView" destination="GVk-JD-Ofr" id="Zsr-sr-Bfm"/>
                 <outlet property="menuViewTopConstraint" destination="L3g-MM-rhv" id="2fA-Yd-U0i"/>
+                <outlet property="scrollBtn" destination="Vhw-Am-CI6" id="pxC-ge-PrR"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -38,6 +39,23 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover" translatesAutoresizingMaskIntoConstraints="NO" id="5Sd-AZ-fZC">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhw-Am-CI6">
+                    <rect key="frame" x="12" y="846" width="102" height="38"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="102" id="3XK-2G-lRu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,11 +72,19 @@
                 <constraint firstItem="0c7-Fq-0D6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="PbT-S3-Zlz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jEy-6q-FWq" secondAttribute="bottom" id="RTT-59-WdD"/>
                 <constraint firstItem="jEy-6q-FWq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Wne-63-YTW"/>
+                <constraint firstItem="Vhw-Am-CI6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="dW7-Vn-KI8"/>
                 <constraint firstItem="5Sd-AZ-fZC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="e7h-Be-6z7"/>
+                <constraint firstAttribute="bottom" secondItem="Vhw-Am-CI6" secondAttribute="bottom" constant="12" id="eWX-R5-3hG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5Sd-AZ-fZC" secondAttribute="bottom" id="jx0-Fx-XY1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0c7-Fq-0D6" secondAttribute="bottom" id="rsQ-rI-fxp"/>
             </constraints>
-            <point key="canvasLocation" x="-178" y="113"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="-178.2608695652174" y="112.5"/>
         </view>
     </objects>
     <resources>
