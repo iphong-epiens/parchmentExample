@@ -2,8 +2,7 @@
 
 1. [Main](#main)
 2. [Media](#media)
-
-    1. [Common](#common)
+     1. [Common](#common)
      2. [Stream](#stream)
      3. [Broadcast](#broadcast)
      
