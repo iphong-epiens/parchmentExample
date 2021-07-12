@@ -1,8 +1,8 @@
 # Soruce Description
 
 1. [Main](#main)
-2. [Media Feature](#media)
-3. [Admin Feature](#admin)
+2. [Media](#media)
+3. [Admin](#admin)
 4. [Cocoapod Library](#cocoapod-library)
 5. [Etc](#etc)
 
