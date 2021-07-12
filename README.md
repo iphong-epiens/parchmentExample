@@ -4,9 +4,7 @@
 2. [Media](#media)
 
      1. [Common](#common)
-     
      2. [Stream](#stream)
-     
      3. [Broadcast](#broadcast)
      
 4. [Admin](#admin)
